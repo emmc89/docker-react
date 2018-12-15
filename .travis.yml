@@ -1,0 +1,14 @@
+
+#Sudo permissons required
+sudo: required
+
+#Describe services
+services:
+  - docker #We will use docker
+  
+before_install:
+  - docker build -t emmc89/docker-react -f Dockerfile.dev . #build docker with tag
+
+script:
+  - docker run emmc89/docker-reac npm run test -- --coverage 
+    #run the test and end it
